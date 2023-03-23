@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import Searchbar from './components/Searchbar';
+import SearchedList from './components/SearchedList';
 import usersData from './data/users.data.json';
 import User from './interfaces/User.interface';
-import SearchedListRedux from './components/SearchedListRedux';
-function App() {
+function AppWithoutRedux() {
 	const [searchedUsers, setSearchedUsers] = useState<User[]>([]);
 
 	const handleFilter = (searchText: string) => {
@@ -20,9 +20,9 @@ function App() {
 	return (
 		<div className='App'>
 			<Searchbar handleFilter={handleFilter} />
-			{searchedUsers.length ? <SearchedListRedux data={searchedUsers} /> : null}
+			{searchedUsers.length ? <SearchedList data={searchedUsers} /> : null}
 		</div>
 	);
 }
 
-export default App;
+export default AppWithoutRedux;
